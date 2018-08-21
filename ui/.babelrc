@@ -1,0 +1,62 @@
+{
+    "plugins": [
+        "transform-decorators-legacy",
+        "transform-class-properties",
+        "transform-flow-strip-types"
+    ],
+    "presets": [
+        "flow",
+        ["env", {
+            "excludes": [
+                "transform-async-generator-functions",
+                "transform-async-to-generator",
+                "transform-regenerator"
+            ],
+            "modules": false,
+            "targets": {
+                "browsers": ["last 3 versions", "not Explorer < 11"]
+            },
+            "useBuiltIns": true
+        }],
+        "react",
+        "stage-2",
+        "es2017"
+    ],
+    "env": {
+        "development": {
+            "plugins": [
+                "flow-react-proptypes",
+                ["react-transform", {
+                    "transforms": [{"transform": "react-transform-count-renders"}]
+                }]
+            ]
+        },
+        "production": {
+            "plugins": [
+                "transform-react-inline-elements",
+                "transform-react-pure-class-to-function",
+                "transform-react-remove-prop-types"
+            ]
+        },
+        "test": {
+            "presets": [
+                [
+                    "env",
+                    {
+                        "modules": "commonjs",
+                        "useBuiltIns": "usage",
+                        "debug": false
+                    }
+                ],
+                "stage-2",
+                "react",
+                "jest"
+            ],
+            "plugins": [
+                "transform-decorators-legacy",
+                "transform-class-properties",
+                "transform-es2015-modules-commonjs"
+            ]
+        }
+    }
+}
